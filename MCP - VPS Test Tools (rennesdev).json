@@ -1,0 +1,123 @@
+{
+  "name": "MCP - VPS Test Tools (rennesdev)",
+  "nodes": [
+    {
+      "parameters": {
+        "authentication": "bearerAuth",
+        "path": "vps-tools"
+      },
+      "id": "f117e0e7-dd31-4d04-ba11-b4cf9ac2b7bb",
+      "name": "MCP Server Trigger",
+      "type": "@n8n/n8n-nodes-langchain.mcpTrigger",
+      "position": [
+        32,
+        32
+      ],
+      "webhookId": "b7c1d2e3-0000-4000-8000-000000000001",
+      "notesInFlow": true,
+      "typeVersion": 2.1,
+      "credentials": {
+        "httpBearerAuth": {
+          "id": "n2Z7tQPRcZszA5Qr",
+          "name": "Bearer Auth account"
+        }
+      },
+      "notes": "Auth Bearer obligatoire. Production URL: https://n8n.rennesdev.fr/mcp/vps N8N"
+    },
+    {
+      "parameters": {
+        "description": "Retourne l'état système du VPS rennesdev : uptime, charge CPU, mémoire, disque. Lecture seule.",
+        "workflowId": {
+          "_rl": true,
+          "mode": "list",
+          "value": "mj77DoOM66CMRN6h",
+          "cachedResultUrl": "/workflow/mj77DoOM66CMRN6h",
+          "cachedResultName": "vps_status"
+        },
+        "workflowInputs": {
+          "value": {},
+          "schema": [],
+          "mappingMode": "defineBelow",
+          "matchingColumns": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        }
+      },
+      "id": "f941d8c8-2037-4780-a8c2-e212a38658d9",
+      "name": "vps_status",
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "position": [
+        -192,
+        352
+      ],
+      "typeVersion": 2.2
+    },
+    {
+      "parameters": {
+        "description": "Liste les ports TCP en écoute sur le VPS avec le nom du processus. Lecture seule. ",
+        "workflowId": {
+          "_rl": true,
+          "mode": "list",
+          "value": "sQOriFptG4PZOjuH",
+          "cachedResultUrl": "/workflow/sQOriFptG4PZOjuH",
+          "cachedResultName": "vps_ports"
+        },
+        "workflowInputs": {
+          "value": {},
+          "schema": [],
+          "mappingMode": "defineBelow",
+          "matchingColumns": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        }
+      },
+      "id": "cf92974b-650a-475e-b9a7-69560079236f",
+      "name": "vps-ports",
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "position": [
+        384,
+        368
+      ],
+      "typeVersion": 2.2
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "vps_status": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "vps-ports": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": true
+  },
+  "versionId": "475cebb1-08b2-41a3-811f-54ccf359d462",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "34993b2e84bd731f090a989c3f9823973058f84b9cf1aa8359b514969a71428f"
+  },
+  "nodeGroups": [],
+  "id": "32kp8PLvHgJb7Dsc",
+  "tags": []
+}
