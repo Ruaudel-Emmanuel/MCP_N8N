@@ -22,7 +22,7 @@
           "name": "Bearer Auth account"
         }
       },
-      "notes": "Auth Bearer obligatoire. Production URL: https://n8n.rennesdev.fr/mcp/vps N8N"
+      "notes": "Auth Bearer obligatoire. "
     },
     {
       "parameters": {
@@ -115,7 +115,7 @@
   "versionId": "475cebb1-08b2-41a3-811f-54ccf359d462",
   "meta": {
     "templateCredsSetupCompleted": true,
-    "instanceId": "34993b2e84bd731f090a989c3f9823973058f84b9cf1aa8359b514969a71428f"
+    "instanceId": "***"
   },
   "nodeGroups": [],
   "id": "32kp8PLvHgJb7Dsc",
